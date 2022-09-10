@@ -27,9 +27,10 @@ CREATE TABLE `movie` (
   `title` varchar(100) COLLATE utf8mb4_bin DEFAULT NULL,
   `runtime` time DEFAULT NULL,
   `director` varchar(100) COLLATE utf8mb4_bin DEFAULT NULL,
-  `release_year` int(11) DEFAULT NULL,
+  `release_year` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id(PK)`),
-  UNIQUE KEY `movie_UN` (`title`,`director`,`release_year`)
+  UNIQUE KEY `movie_UN` (`title`,`director`,`release_year`),
+  CONSTRAINT `movie_CHECK` CHECK (`release_year` > 2000)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -39,7 +40,7 @@ CREATE TABLE `movie` (
 
 LOCK TABLES `movie` WRITE;
 /*!40000 ALTER TABLE `movie` DISABLE KEYS */;
-INSERT INTO `movie` VALUES (3,'snake','02:05:00','khan',2007),(4,'sholay','04:00:00','salman',1975),(5,'krish','02:00:00','roshan',2006);
+INSERT INTO `movie` VALUES (3,'snake','02:05:00','khan',2007),(5,'krish','02:00:00','roshan',2006);
 /*!40000 ALTER TABLE `movie` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -56,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-10 15:18:57
+-- Dump completed on 2022-09-10 15:36:14
